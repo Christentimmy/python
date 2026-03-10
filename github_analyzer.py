@@ -25,3 +25,16 @@ async def get_github_user(name: str):
 
 res = asyncio.run(get_github_user("Christentimmy"))
 print(res)
+
+async def analyze_repos(name: str) -> dict:
+    async with httpx.AsyncClient() as client:
+        response = await client.get(f"{base_url}/{name}/repos")
+        if response.status_code != 200:
+            raise Exception("Failed to fetch")
+        decoded = response.json()
+        total_repos = len(decoded)
+        return {"total_repos": total_repos};
+
+
+res = asyncio.run(analyze_repos("Christentimmy"))
+print(res)
