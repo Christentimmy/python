@@ -1,0 +1,11 @@
+
+
+.env
+pycache/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.log
+.DS_Store (if on macOS)
+.vscode/ (if using VS Code)*
