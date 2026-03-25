@@ -16,7 +16,7 @@ async def run_agent(user_input, tools):
         }
     ]
 
-    while True:
+    for _ in range(5):
         response = await call_llm(messages, tools)
         message = response["choices"][0]["message"]
 
@@ -36,3 +36,6 @@ async def run_agent(user_input, tools):
                 "tool_call_id": tool_call["id"],
                 "content": str(result)
             })
+
+    return "Agent reached maximum steps"
+
